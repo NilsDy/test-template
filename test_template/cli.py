@@ -1,15 +1,6 @@
-"""CLI interface for test_template project.
+import argparse
+from test_template.fibonacci import Fibonacci
 
-Be creative! do whatever you want!
-
-- Install click or typer and create a CLI app
-- Use builtin argparse
-- Start a web application
-- Import things from your .base module
-"""
-##### YOUR CODE HERE #####
-
-##########################
 
 def main():  # pragma: no cover
     """
@@ -27,6 +18,10 @@ def main():  # pragma: no cover
         * List all available tasks
         * Run an application (Flask, FastAPI, Django, etc.)
     """
-    ##### YOUR CODE HERE #####
-    print("This will do something")
-    ##########################
+    parser = argparse.ArgumentParser(description="Fibonacci computation")
+    parser.add_argument("n", type=int, help="An integer input")
+
+    args = parser.parse_args()
+
+    f = Fibonacci()
+    print("Fibonacci result = ", f.fib(args.n))
